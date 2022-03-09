@@ -7,10 +7,16 @@ const NavBar = () => {
 
   return (
     <nav>
-      <NavLink activeClassName="active" to="/">
+      <NavLink
+        className={(navData) => (navData.isActive ? "active" : "none")}
+        to="/"
+      >
         Home
       </NavLink>
-      <NavLink activeClassName="active" to="/about">
+      <NavLink
+        className={(navData) => (navData.isActive ? "active" : "none")}
+        to="/about"
+      >
         About
       </NavLink>
       <button onClick={() => history(-1)}>Back</button>
