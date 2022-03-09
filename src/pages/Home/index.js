@@ -5,11 +5,13 @@ import { useSelector, useDispatch } from "react-redux";
 
 const Home = () => {
   const result = useSelector((state) => state.result);
+  const gitUser = useSelector((state) => state.gitUser);
+
   const dispatch = useDispatch();
   const search = (searchTerm) => dispatch(getResult(searchTerm));
 
   const renderResult = () => {
-    <Result result={result} />;
+    return <Result result={result} />;
   };
 
   return (
@@ -21,7 +23,7 @@ const Home = () => {
       <div>
         <SearchForm getResult={search} />
       </div>
-      <div>{renderResult()}</div>
+      <div>{gitUser && renderResult()}</div>
     </>
   );
 };
