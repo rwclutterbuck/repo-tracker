@@ -1,4 +1,5 @@
 import React from "react";
+import "./style.css";
 
 export default function renderResult({ result }) {
   const renderList = () => {
@@ -11,16 +12,20 @@ export default function renderResult({ result }) {
 
     return (
       <table>
-        <tr>
-          <th>Repository Name</th>
-          <th>Number of Forks</th>
-        </tr>
-        {repoObjectArray.map((repo) => (
+        <thead>
           <tr>
-            <td>{repo.name}</td>
-            <td>{repo.forks}</td>
+            <th>Repository Name</th>
+            <th>Number of Forks</th>
           </tr>
-        ))}
+        </thead>
+        <tbody>
+          {repoObjectArray.map((repo, id) => (
+            <tr key={id}>
+              <td>{repo.name}</td>
+              <td>{repo.forks}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     );
   };
