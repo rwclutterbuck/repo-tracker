@@ -1,18 +1,19 @@
 import React from "react";
-import { NavLink, useHistory } from "react-router-dom";
+import "./style.css";
+import { NavLink, useNavigate } from "react-router-dom";
 
 const NavBar = () => {
-  const history = useHistory();
+  const history = useNavigate();
 
   return (
     <nav>
-      <NavLink className="home-link" to="/">
+      <NavLink activeClassName="active" to="/">
         Home
       </NavLink>
       <NavLink activeClassName="active" to="/about">
         About
       </NavLink>
-      <button onClick={history.goBack}>Back</button>
+      <button onClick={() => history(-1)}>Back</button>
     </nav>
   );
 };
