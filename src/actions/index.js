@@ -2,9 +2,9 @@ import axios from "axios";
 
 const loading = (gitUser) => ({ type: "LOADING", payload: gitUser });
 
-const loadResult = (userData) => ({
+const loadResult = (data) => ({
   type: "LOAD_RESULT",
-  payload: { userData }
+  payload: { data }
 });
 
 export const getResult = (searchTerm) => {
@@ -12,9 +12,15 @@ export const getResult = (searchTerm) => {
     dispatch(loading(searchTerm));
     try {
       const userData = await fetchUserData(searchTerm);
-      const avatar = await fetchAvatar(userData.avatar_url);
       const repos = await fetchRepos(userData.repos_url);
-      dispatch(loadResult(userData));
+      const result = {
+        publicRepos: userData.public_repos,
+        followersNum: userData.followers,
+        followingNum: userData.following,
+        avatar: userData.avatar_url,
+        repos: repos
+      };
+      dispatch(loadResult(result));
     } catch (err) {
       console.warn(err.message);
       dispatch({ type: "SET_ERROR", payload: err.message });
