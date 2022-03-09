@@ -4,6 +4,9 @@ const SearchForm = () => {
   const HandleSubmit = (e) => {
     e.preventDefault();
     e.target.reset();
+    // console.log(e.username);
+
+    // getResult()
   };
 
   return (
