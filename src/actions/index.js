@@ -2,9 +2,9 @@ import axios from "axios";
 
 const loading = (gitUser) => ({ type: "LOADING", payload: gitUser });
 
-const loadResult = (data) => ({
+const loadResult = (result) => ({
   type: "LOAD_RESULT",
-  payload: { data }
+  payload: { ...result }
 });
 
 export const getResult = (searchTerm) => {
