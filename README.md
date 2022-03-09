@@ -1,6 +1,8 @@
-# Getting Started with Create React App
+# Repo Tracker Site
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Thank you for checking out this project. The aim of which is to allow users the ability to easily access data from github without having to use github's site.
 
 ## Available Scripts
 
