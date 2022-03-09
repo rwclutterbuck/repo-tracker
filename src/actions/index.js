@@ -2,9 +2,9 @@ import axios from "axios";
 
 const loading = (gitUser) => ({ type: "LOADING", payload: gitUser });
 
-const loadResult = ({ results: {} }) => ({
+const loadResult = (userData) => ({
   type: "LOAD_RESULT",
-  payload: {}
+  payload: { userData }
 });
 
 export const getResult = (searchTerm) => {
@@ -34,7 +34,7 @@ const fetchUserData = async (searchTerm) => {
   }
 };
 
-const fetchAvatar = (url) => {
+const fetchAvatar = async (url) => {
   try {
     const { data } = await axios.get(url);
     return data;
@@ -43,7 +43,7 @@ const fetchAvatar = (url) => {
   }
 };
 
-const fetchRepos = (url) => {
+const fetchRepos = async (url) => {
   try {
     const { data } = await axios.get(url);
     return data;
