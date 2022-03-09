@@ -12,9 +12,13 @@ export const getResult = (searchTerm) => {
     dispatch(loading(searchTerm));
     try {
       const userData = await fetchUserData(searchTerm);
-//      const avatar = await fetchAvatar(userData.avatar_url);
-//      const repos = await fetchRepos(userData.repos_url);
-    } catch (err) {}
+      const avatar = await fetchAvatar(userData.avatar_url);
+      const repos = await fetchRepos(userData.repos_url);
+      dispatch(loadResult(userData));
+    } catch (err) {
+      console.warn(err.message);
+      dispatch({ type: "SET_ERROR", payload: err.message });
+    }
   };
 };
 
@@ -26,9 +30,24 @@ const fetchUserData = async (searchTerm) => {
     );
     return data;
   } catch (err) {
-    if (data.status === 404) {
-      throw new Error(`User ${searchTerm} was not found`);
-    }
+    throw new Error(err.message);
+  }
+};
+
+const fetchAvatar = (url) => {
+  try {
+    const { data } = await axios.get(url);
+    return data;
+  } catch (err) {
+    throw new Error(err.message);
+  }
+};
+
+const fetchRepos = (url) => {
+  try {
+    const { data } = await axios.get(url);
+    return data;
+  } catch (err) {
     throw new Error(err.message);
   }
 };
