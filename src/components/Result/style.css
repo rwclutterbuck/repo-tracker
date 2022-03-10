@@ -1,0 +1,30 @@
+#content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#table {
+  margin: 2rem;
+}
+
+#avatar {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem;
+  justify-content: center;
+}
+
+table {
+  border: 1px solid black;
+  background-color: rgb(136, 188, 190);
+}
+
+thead {
+  font-size: 20px;
+}
+
+img {
+  width: 250px;
+  height: 250px;
+}
