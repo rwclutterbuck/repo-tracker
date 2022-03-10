@@ -1,4 +1,5 @@
 import React from "react";
+import "./style.css";
 
 const SearchForm = ({ getResult }) => {
   const HandleSubmit = (e) => {
@@ -11,7 +12,9 @@ const SearchForm = ({ getResult }) => {
   return (
     <>
       <form aria-label="form" onSubmit={HandleSubmit}>
-        <label htmlFor="username">GitHub Username: </label>
+        <label id="username" htmlFor="username">
+          GitHub Username:
+        </label>
         <input name="username" type="text" />
         <input type="submit" value="Search" />
       </form>

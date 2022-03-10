@@ -7,7 +7,9 @@ import { NavBar } from "./components";
 function App() {
   return (
     <div className="App">
-      <NavBar />
+      <header>
+        <NavBar />
+      </header>
       <main>
         <Routes>
           <Route exact path="/" element={<Home />} />

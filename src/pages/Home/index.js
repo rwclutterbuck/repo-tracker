@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from "react-redux";
 const Home = () => {
   const result = useSelector((state) => state.result);
   const loading = useSelector((state) => state.loading);
+  const gitUser = useSelector((state) => state.gitUser);
 
   const dispatch = useDispatch();
   const search = (searchTerm) => dispatch(getResult(searchTerm));
@@ -23,7 +24,10 @@ const Home = () => {
       <div>
         <SearchForm getResult={search} />
       </div>
-      <div>{!loading && result.repos && renderResult()}</div>
+      <div>
+        <h2>{gitUser}</h2>
+      </div>
+      {!loading && result.repos && renderResult()}
     </>
   );
 };

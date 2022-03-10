@@ -7,37 +7,44 @@ export default function renderResult({ result }) {
     const repoObjectArray = [];
     for (const property in result.repos) {
       const entry = Object.values(result.repos)[property];
-      repoObjectArray.push({ name: entry.name, forks: entry.forks });
+      repoObjectArray.push({
+        name: entry.name,
+        forks: entry.forks,
+        url: entry.html_url
+      });
     }
 
     return (
-      <table>
-        <thead>
-          <tr>
-            <th>Repository Name</th>
-            <th>Number of Forks</th>
-          </tr>
-        </thead>
-        <tbody>
-          {repoObjectArray.map((repo, id) => (
-            <tr key={id}>
-              <td>{repo.name}</td>
-              <td>{repo.forks}</td>
+      <div id="table">
+        <table>
+          <thead>
+            <tr>
+              <th>Repository Name</th>
+              <th>Number of Forks</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {repoObjectArray.map((repo, id) => (
+              <tr key={id}>
+                <td>
+                  <a href={repo.url}>{repo.name}</a>
+                </td>
+                <td>{repo.forks}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     );
   };
 
   return (
-    <>
-      <section>
-        <div id="avatar">
-          <img width="128" height="128" src={result.avatar} />
-        </div>
-      </section>
-      <section>{renderList()}</section>
-    </>
+    <section id="content">
+      <div id="avatar">
+        <img src={result.avatar} />
+        <p>{}</p>
+      </div>
+      {renderList()}
+    </section>
   );
 }
